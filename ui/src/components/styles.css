@@ -1,0 +1,87 @@
+html, body, #root, .App {
+    height: 100vh;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+}
+
+#title-bar {
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    height: 24px;
+    background-color: #0E5A8A;
+    color: white;
+    border-bottom: 1px solid #C9C9C9;
+    text-align: center;
+    padding: 4px;
+    font-size: 12px;
+}
+
+#contents {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    -webkit-user-select: none;
+}
+
+#top-controls {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+#sql-container {
+    display: flex;
+    flex: 4;
+    flex-direction: column;
+}
+
+#sql-ace {
+    display: flex;
+    border-bottom: 1px solid #C9C9C9;
+    border-right: 1px solid #C9C9C9;
+    flex: 4;
+}
+
+.file-list {
+    min-height: 24px;
+}
+
+.file-list-item {
+    margin: 2px;
+    vertical-align: middle;
+}
+
+.file-list-item .mono {
+    background-color: white;
+}
+
+#controls-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+#controls {
+
+}
+
+#controls button {
+    margin-bottom: 5px;
+}
+
+#results-container {
+    flex: 3;
+    display: flex;
+    border-top: 1px solid #C9C9C9;
+}
+
+#table-container {
+    overflow: scroll;
+    display: flex;
+    flex: 1;
+}
