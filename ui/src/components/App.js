@@ -8,6 +8,7 @@ import './styles.css';
 import numbro from 'numbro';
 import moment from 'moment';
 import MainStore from 'stores/MainStore';
+import _ from 'lodash';
 
 import SQL from './SQL';
 import Controls from './Controls';
@@ -31,13 +32,15 @@ class App extends Component {
       MainStore.setFileHovering(false);
     }
   }
+  pluralize(count, baseWord) {
+    return count !== 1 ? `${baseWord}s` : baseWord;
+  }
   render() {
     const {latestResults} = MainStore.toJS();
-    console.log(latestResults)
     return (
       <div className="App">
         <nav id="title-bar">
-          <span>{latestResults ? `${numbro(latestResults.itemCount).format()} rows. ${moment.duration(latestResults.executionTime).asSeconds()} seconds.` : 'Augmentable SQL'}</span>
+          <span>{latestResults ? `${numbro(latestResults.itemCount).format()} ${this.pluralize(latestResults.itemCount, 'row')}. ${moment.duration(latestResults.executionTime).asSeconds()} seconds. Previewing ${_.size(latestResults.preview)} ${this.pluralize(_.size(latestResults.preview), 'row')}.` : 'Augmentable SQL'}</span>
         </nav>
 
         <div id="contents">

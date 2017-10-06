@@ -9,7 +9,7 @@ import {Table, Column, Cell, ColumnHeaderCell} from '@blueprintjs/table';
 class Results extends Component {
 
     render() {
-        const {latestResults, currentSQL, queryError} = MainStore.toJS();
+        const {latestResults, queryError} = MainStore.toJS();
         const columns = (latestResults && !_.isEmpty(latestResults.preview)) ? _.keys(latestResults.preview[0]) : [];
 
         return (

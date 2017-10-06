@@ -8,10 +8,6 @@ const path = window.require('path');
 const {shell} = window.require('electron')
 
 class FileList extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {files} = MainStore.toJS();
         return (
@@ -28,7 +24,7 @@ class FileList extends Component {
                             }}
                             onClick={() => shell.showItemInFolder(file)}
                         >
-                            <strong>${i}</strong> {path.basename(file)}
+                            <strong>${i+1}</strong> {path.basename(file)}
                         </Tag>
                     )
                 })}

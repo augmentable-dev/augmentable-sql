@@ -1,4 +1,4 @@
-import {extendObservable, observable, toJS} from 'mobx';
+import {extendObservable, toJS} from 'mobx';
 import _ from 'lodash';
 const {app} = window.require('electron').remote;
 
@@ -9,7 +9,7 @@ class MainStore {
             sqlHistory: [],
             latestResults: undefined,
             queryError: null,
-            files: observable.map(),
+            files: [],
             fileHovering: false
         });
 
@@ -27,7 +27,8 @@ class MainStore {
         const {currentSQL, files} = this.toJS();
         this.latestResults = null;
         this.queryError = null;
-        window.worker.alasql(currentSQL, files, app.getPath('userData'))
+        const fileMap = _.reduce(files, (accum, filePath, i) => ({...accum, [i+1]: filePath}), {});
+        window.worker.alasql(currentSQL, fileMap, app.getPath('userData'))
             .then(res => {
                 this.latestResults = res;
                 console.log(res)
@@ -39,15 +40,13 @@ class MainStore {
     }
 
     loadFile(filePath) {
-        const fileCount = this.files.size;
         const alreadyLoaded = _.includes(this.files.values(), filePath)
         if (alreadyLoaded) return;
-        this.files.set(`${fileCount + 1}`, filePath);
+        this.files.push(filePath);
     }
 
-    removeFile(filePathKey) {
-        const {files} = this.toJS();
-        this.files.delete(filePathKey)
+    removeFile(filePathIndex) {
+        this.files.splice(filePathIndex, 1);
     }
     
     toJS() {

@@ -1,12 +1,12 @@
 {
   "name": "ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^1.30.0",
     "@blueprintjs/table": "1.27.0",
     "brace": "^0.10.0",
-    "mobx": "^3.3.0",
+    "mobx": "^3.3.1",
     "mobx-react": "^4.3.3",
     "normalize.css": "^7.0.0",
     "numbro": "^1.11.0",

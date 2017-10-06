@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {observer} from 'mobx-react';
-import _ from 'lodash';
 import MainStore from 'stores/MainStore';
 import AceEditor from 'react-ace';
 import brace from 'brace';
@@ -22,7 +21,7 @@ class SQL extends Component {
     }
  
     render() {
-        const {files, currentSQL} = MainStore.toJS();
+        const {currentSQL} = MainStore.toJS();
         return (
             <div id="sql-container" onKeyPress={this.onKeyPress}>
                 <AceEditor

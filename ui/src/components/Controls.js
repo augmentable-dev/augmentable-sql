@@ -31,7 +31,7 @@ class Controls extends Component {
     }
 
     render() {
-        const {currentSQL, files, fileHovering} = MainStore.toJS();
+        const {currentSQL, files} = MainStore.toJS();
 
         return (
             <div id="controls-container">
